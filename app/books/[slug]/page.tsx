@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LeadForm } from "@/components/LeadForm";
 import { ProductGallery } from "@/components/ProductGallery";
+import { ProductActions } from "@/components/ProductActions";
 import { books, formatPrice, getBook } from "@/data/products";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -93,11 +94,10 @@ export default async function BookPage({ params }: PageProps) {
           <ul className="feature-list">
             {book.features.map((feature) => <li key={feature}>{feature}</li>)}
           </ul>
-          <a className="button button-gold button-full" href="#book-request">
-            Уточнить наличие
-          </a>
+          <ProductActions slug={book.slug} />
           <p className="microcopy">
-            На первом шаге — только имя и номер. Никаких семейных документов.
+            Можно положить книгу в корзину без регистрации. Для подтверждения
+            понадобятся только имя и номер.
           </p>
         </div>
       </section>
