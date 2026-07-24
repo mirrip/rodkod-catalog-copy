@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChatWidget } from "@/components/ChatWidget";
+import { CommerceProvider } from "@/components/CommerceProvider";
 
 const siteUrl = "https://rodkod.ru";
 
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#17130f",
+  themeColor: "#4a3520",
 };
 
 export default function RootLayout({
@@ -77,10 +78,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <ChatWidget />
+        <CommerceProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <ChatWidget />
+        </CommerceProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
