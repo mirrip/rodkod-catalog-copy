@@ -10,19 +10,14 @@ const frames = [
     label: "Элитная коллекция",
   },
   {
-    src: "/products/opletka-drevo-01.jpg",
-    alt: "Родословная книга с золотым древом",
-    label: "Семейная реликвия",
+    src: "/products/izyskannaya-01.jpg",
+    alt: "Изысканная родословная книга с золотым тиснением",
+    label: "Изысканная коллекция",
   },
   {
     src: "/products/wedding-01.jpg",
     alt: "Белая свадебная родословная книга",
     label: "История новой семьи",
-  },
-  {
-    src: "/products/bordo-drevo-01.jpg",
-    alt: "Бордовая родословная книга с древом",
-    label: "Память поколений",
   },
 ];
 
@@ -34,7 +29,7 @@ export function HeroGallery() {
     if (paused) return;
     const timer = window.setInterval(
       () => setActive((value) => (value + 1) % frames.length),
-      4200,
+      9000,
     );
     return () => window.clearInterval(timer);
   }, [paused]);
@@ -74,9 +69,6 @@ export function HeroGallery() {
           />
         ))}
       </div>
-      <span className="hero-gallery-number" aria-hidden="true">
-        0{active + 1}
-      </span>
     </div>
   );
 }
