@@ -10,6 +10,8 @@ type LeadFormProps = {
   title?: string;
   compact?: boolean;
   submitLabel?: string;
+  details?: string;
+  hideMarketing?: boolean;
 };
 
 const initialState = {
@@ -40,6 +42,8 @@ export function LeadForm({
   title = "Получить бесплатную консультацию",
   compact = false,
   submitLabel = "Обсудить задачу",
+  details = "",
+  hideMarketing = false,
 }: LeadFormProps) {
   const [form, setForm] = useState(initialState);
   const [status, setStatus] = useState<
@@ -83,6 +87,7 @@ export function LeadForm({
           phone: form.phone,
           consent: form.consent,
           marketingConsent: form.marketingConsent,
+          chatSummary: details,
           pageUrl: window.location.href,
           utm: {
             source: params.get("utm_source") ?? "",
@@ -174,22 +179,24 @@ export function LeadForm({
         </span>
       </label>
 
-      <label className="check-row check-row-optional">
-        <input
-          type="checkbox"
-          checked={form.marketingConsent}
-          onChange={(event) =>
-            setForm((value) => ({
-              ...value,
-              marketingConsent: event.target.checked,
-            }))
-          }
-        />
-        <span>
-          Хочу иногда получать полезные материалы о семейной истории. Не
-          обязательно для консультации.
-        </span>
-      </label>
+      {!hideMarketing ? (
+        <label className="check-row check-row-optional">
+          <input
+            type="checkbox"
+            checked={form.marketingConsent}
+            onChange={(event) =>
+              setForm((value) => ({
+                ...value,
+                marketingConsent: event.target.checked,
+              }))
+            }
+          />
+          <span>
+            Хочу иногда получать полезные материалы о семейной истории. Не
+            обязательно для консультации.
+          </span>
+        </label>
+      ) : null}
 
       <button
         className="button button-gold button-full"
