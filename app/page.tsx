@@ -6,58 +6,50 @@ import { ProductCard } from "@/components/ProductCard";
 import { featuredBooks } from "@/data/products";
 import { services } from "@/data/services";
 
-const journey = [
-  {
-    number: "01",
-    title: "Увидеть",
-    text: "За несколько секунд понять: РодКод помогает семье сохранить память — в книге, исследовании, древе или цельной истории.",
-  },
-  {
-    number: "02",
-    title: "Выбрать",
-    text: "Сравнить самостоятельные продукты с понятными фотографиями, результатом, стоимостью и отдельной страницей.",
-  },
-  {
-    number: "03",
-    title: "Начать легко",
-    text: "Оставить только имя и номер. Без большой анкеты, документов и оплаты на первом шаге.",
-  },
-  {
-    number: "04",
-    title: "Убедиться",
-    text: "Увидеть процесс, ограничения, примеры задач и человека, который отвечает за результат.",
-  },
-  {
-    number: "05",
-    title: "Получить поддержку",
-    text: "Задать вопрос помощнику и позвать специалиста, если нужен человеческий ответ.",
-  },
-];
-
 const scenarios = [
   {
     title: "Подарок родителям",
     situation:
-      "Нужен семейный подарок к юбилею, но нет времени собирать сложный архив.",
-    solution:
-      "Начать с готовой родословной книги и получить список первых вопросов для семьи.",
-    result: "Понятный подарок сейчас и основа для продолжения истории позже.",
+      "Нужен семейный подарок к юбилею, но нет времени начинать большое исследование.",
+    result:
+      "Подбираем готовую книгу и даём понятный список вопросов, с которых семья сможет начать.",
   },
   {
-    title: "Имя предка и одна фотография",
+    title: "Известно только имя предка",
     situation:
-      "В семье сохранились имя, примерный год и старая фотография, но неизвестно, где искать дальше.",
-    solution:
-      "На консультации оценить исходные сведения и определить реальные источники.",
-    result: "Пошаговый маршрут без обещаний, которые невозможно проверить.",
+      "Сохранились имя, примерный год и одна фотография, а направление поиска непонятно.",
+    result:
+      "Оцениваем исходные сведения и предлагаем реалистичный первый этап без обещания выдуманных находок.",
   },
   {
-    title: "Сведения есть, порядка нет",
+    title: "Семейный архив без порядка",
     situation:
-      "Фотографии, заметки и рассказы родственников хранятся в разных местах.",
-    solution:
-      "Начать с истории одного человека, структуры интервью и списка материалов.",
-    result: "Первый законченный семейный рассказ вместо бесконечного сбора.",
+      "Фотографии, заметки и рассказы родственников лежат в разных местах.",
+    result:
+      "Собираем структуру истории одного человека, чтобы появился первый законченный результат.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Нужно ли сразу передавать семейные документы?",
+    answer:
+      "Нет. Для первой консультации нужны только имя и номер для связи. Фотографии, документы и сведения о родственниках обсуждаются позже, если вы согласуете задачу и условия.",
+  },
+  {
+    question: "Можно ли заказать только книгу без исследования?",
+    answer:
+      "Да. Книга — самостоятельный продукт. Её можно выбрать в каталоге, добавить в корзину и обсудить комплектацию отдельно от других услуг.",
+  },
+  {
+    question: "Что происходит после заявки?",
+    answer:
+      "Специалист уточняет задачу, дату и желаемый результат, после чего подтверждает наличие, стоимость и следующий шаг. До согласования оплачивать ничего не нужно.",
+  },
+  {
+    question: "Можно ли гарантировать результат архивного поиска?",
+    answer:
+      "Нет, и мы не обещаем невозможного. Результат зависит от периода, географии и сохранности источников. Сначала оцениваем исходные данные, затем предлагаем проверяемый этап работы.",
   },
 ];
 
@@ -65,32 +57,30 @@ export default function Home() {
   return (
     <main>
       <section className="hero">
-        <div className="hero-visual">
-          <HeroGallery />
-        </div>
-        <div className="shell hero-content-wrap">
+        <div className="shell hero-shell">
+          <div className="hero-visual">
+            <HeroGallery />
+          </div>
           <div className="hero-copy">
-            <p className="eyebrow">Семейное наследие — не папка в телефоне</p>
+            <p className="eyebrow">Семейное наследие с личной историей</p>
             <h1>
               История семьи,
-              <br />
               <em>к которой возвращаются</em>
             </h1>
             <p className="hero-lead">
               Родословные книги, поиск предков, семейные древа и помощь в
-              создании истории семьи — спокойно, поэтапно и с уважением к
-              личному.
+              создании истории семьи — бережно, понятно и без лишней сложности.
             </p>
             <div className="hero-actions">
               <Link className="button button-gold" href="/catalog">
                 Посмотреть направления
               </Link>
-              <Link className="text-link" href="/consultation">
-                Начать с разговора <span>→</span>
+              <Link className="soft-link" href="/consultation">
+                Бесплатная консультация <span>→</span>
               </Link>
             </div>
             <div className="hero-trust">
-              <span>Только 2 поля для первого шага</span>
+              <span>Только имя и номер для начала</span>
               <span>Без оплаты до согласования</span>
             </div>
           </div>
@@ -101,13 +91,12 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading split-heading">
             <div>
-              <p className="eyebrow">Один проект — несколько способов сохранить</p>
-              <h2 id="directions">Выберите не товар, а нужный семье результат</h2>
+              <p className="eyebrow">Направления РодКод</p>
+              <h2 id="directions">Выберите результат, который нужен семье</h2>
             </div>
             <p>
-              Книга — только одно из направлений. Можно начать с готового
-              подарка, отдельного предка, семейного древа или истории одного
-              человека.
+              Можно начать с готовой книги, одного предка, семейного древа или
+              истории одного человека. Необязательно решать всё сразу.
             </p>
           </div>
 
@@ -115,81 +104,58 @@ export default function Home() {
             <Link className="direction-card direction-card-featured" href="/books">
               <div className="direction-card-image">
                 <Image
-                  src="/products/izyskannaya-01.jpg"
-                  alt="Родословная книга"
+                  src="/products/elitnaya-01.jpg"
+                  alt="Элитная родословная книга"
                   fill
                   unoptimized
                   sizes="(max-width: 800px) 100vw, 48vw"
                 />
               </div>
-              <div>
-                <span>01 · Готовые книги</span>
+              <div className="direction-card-copy">
+                <span>Готовые книги</span>
                 <h3>Родословные книги</h3>
                 <p>
-                  Красивый первый шаг: от семейного альбома до статусной
-                  кожаной реликвии.
+                  От светлого семейного альбома до статусной кожаной реликвии.
                 </p>
-                <strong>От 5 000 ₽ · Смотреть каталог →</strong>
+                <strong>От 5 000 ₽ · Открыть каталог →</strong>
               </div>
             </Link>
-            {services.map((service, index) => (
+            {services.map((service) => (
               <Link
                 className="direction-card direction-card-service"
                 href={`/services/${service.slug}`}
                 key={service.slug}
               >
-                <span>0{index + 2} · {service.eyebrow}</span>
+                <span>{service.eyebrow}</span>
                 <h3>{service.name}</h3>
                 <p>{service.shortDescription}</p>
-                <strong>Подробнее →</strong>
+                <strong>Узнать подробнее →</strong>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section journey-section" aria-labelledby="journey-title">
+      <section className="section collection-section" aria-labelledby="selected-books">
         <div className="shell">
-          <div className="section-heading centered-heading">
-            <p className="eyebrow">Путь клиента без давления</p>
-            <h2 id="journey-title">Пять шагов от интереса до спокойного решения</h2>
-            <p>
-              Каждый следующий шаг должен требовать меньше усилий, чем кажется,
-              и давать больше ясности.
-            </p>
-          </div>
-          <div className="journey-grid">
-            {journey.map((item) => (
-              <article key={item.number} className="journey-item">
-                <span>{item.number}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-dark" aria-labelledby="selected-books">
-        <div className="shell">
-          <div className="section-heading split-heading section-heading-light">
+          <div className="section-heading split-heading">
             <div>
               <p className="eyebrow">Коллекция РодКод</p>
-              <h2 id="selected-books">Книги, которые уже можно рассмотреть</h2>
+              <h2 id="selected-books">Книги, которые хочется передать дальше</h2>
             </div>
             <p>
-              У каждой модели — собственная страница, фотографии, цена и
-              понятный следующий шаг.
+              У каждой модели есть собственная страница, фотографии, цена,
+              избранное и добавление в корзину без регистрации.
             </p>
           </div>
-          <div className="product-grid product-grid-dark">
+          <div className="product-grid">
             {featuredBooks.map((book, index) => (
               <ProductCard product={book} key={book.slug} priority={index < 2} />
             ))}
           </div>
           <div className="section-action">
-            <Link className="button button-outline-light" href="/books">
-              Открыть все книги
+            <Link className="button button-quiet" href="/books">
+              Смотреть все книги
             </Link>
           </div>
         </div>
@@ -199,49 +165,37 @@ export default function Home() {
         <div className="shell trust-grid">
           <div className="founder-placeholder" aria-label="Место для фотографии основателя">
             <div className="founder-photo-slot">
-              <span>Фотография основателя</span>
-              <small>будет добавлена после съёмки</small>
+              <span>Место для фотографии основателя</span>
+              <small>деловой портрет добавим после съёмки</small>
             </div>
             <div className="founder-caption">
               <p>Личная ответственность</p>
-              <strong>Человек, который отвечает за проект</strong>
+              <strong>За проектом стоит конкретный человек и семейная команда</strong>
             </div>
           </div>
           <div className="trust-copy">
             <p className="eyebrow">Доверие начинается с ясности</p>
-            <h2>Семейная тема требует деликатности, а не громких обещаний</h2>
+            <h2>В семейной теме важны деликатность и честные ожидания</h2>
             <p className="trust-lead">
               Мы заранее объясняем, что произойдёт после заявки, какие сведения
               понадобятся и где заканчиваются наши возможности.
             </p>
             <div className="trust-list">
               <div>
-                <span>01</span>
-                <p>
-                  <strong>Минимум данных</strong>
-                  На первом шаге — только обращение и номер телефона.
-                </p>
+                <i aria-hidden="true">✓</i>
+                <p><strong>Минимум данных</strong>На первом шаге — только обращение и номер.</p>
               </div>
               <div>
-                <span>02</span>
-                <p>
-                  <strong>Согласование до оплаты</strong>
-                  Сначала задача, результат, срок и стоимость — потом решение.
-                </p>
+                <i aria-hidden="true">✓</i>
+                <p><strong>Согласование до оплаты</strong>Сначала результат, срок и стоимость.</p>
               </div>
               <div>
-                <span>03</span>
-                <p>
-                  <strong>Честные ограничения</strong>
-                  Архивный поиск не терпит гарантированных выдуманных находок.
-                </p>
+                <i aria-hidden="true">✓</i>
+                <p><strong>Честные ограничения</strong>Не обещаем архивные находки заранее.</p>
               </div>
               <div>
-                <span>04</span>
-                <p>
-                  <strong>Документы человеческим языком</strong>
-                  Короткое резюме и полная версия каждого условия.
-                </p>
+                <i aria-hidden="true">✓</i>
+                <p><strong>Понятные документы</strong>Условия доступны до отправки заявки.</p>
               </div>
             </div>
           </div>
@@ -252,32 +206,44 @@ export default function Home() {
         <div className="shell">
           <div className="section-heading centered-heading">
             <p className="eyebrow">Примеры задач</p>
-            <h2 id="cases-title">Как может выглядеть первый результат</h2>
+            <h2 id="cases-title">С чего семьи обычно начинают</h2>
             <p>
-              Это демонстрационные сценарии, а не отзывы реальных клиентов.
-              Подтверждённые истории появятся здесь только с разрешения семей.
+              Ниже — демонстрационные сценарии, не выданные за отзывы. Реальные
+              истории будут опубликованы только с разрешения клиентов.
             </p>
           </div>
           <div className="scenario-grid">
             {scenarios.map((scenario) => (
               <article className="scenario-card" key={scenario.title}>
-                <span>Демонстрационный сценарий</span>
+                <span>Пример обращения</span>
                 <h3>{scenario.title}</h3>
-                <dl>
-                  <div>
-                    <dt>Ситуация</dt>
-                    <dd>{scenario.situation}</dd>
-                  </div>
-                  <div>
-                    <dt>Первый шаг</dt>
-                    <dd>{scenario.solution}</dd>
-                  </div>
-                  <div>
-                    <dt>Результат</dt>
-                    <dd>{scenario.result}</dd>
-                  </div>
-                </dl>
+                <p>{scenario.situation}</p>
+                <div>
+                  <strong>Что предлагаем</strong>
+                  <p>{scenario.result}</p>
+                </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section faq-section" id="faq">
+        <div className="shell faq-grid">
+          <div>
+            <p className="eyebrow">Коротко о важном</p>
+            <h2>Вопросы перед первым обращением</h2>
+            <p>
+              Если вашего вопроса нет в списке, откройте чат в правом нижнем
+              углу или попросите специалиста связаться.
+            </p>
+          </div>
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
             ))}
           </div>
         </div>
@@ -286,8 +252,8 @@ export default function Home() {
       <section className="section consultation-band">
         <div className="shell consultation-grid">
           <div className="consultation-copy">
-            <p className="eyebrow">Лид-магнит без скидки</p>
-            <h2>Бесплатная консультация: понять, с чего начать именно вашей семье</h2>
+            <p className="eyebrow">Бесплатная консультация</p>
+            <h2>Поймите, с чего начать именно вашей семье</h2>
             <ul>
               <li>Определим подходящее направление</li>
               <li>Объясним, какие сведения действительно нужны</li>
@@ -298,7 +264,7 @@ export default function Home() {
               документов заранее.
             </p>
           </div>
-          <LeadForm source="homepage_lead_magnet" compact />
+          <LeadForm source="homepage_consultation" compact />
         </div>
       </section>
     </main>
