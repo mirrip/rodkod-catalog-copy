@@ -163,6 +163,75 @@ h2 {
   background: rgba(212, 175, 55, 0.08);
 }
 
+.seo-guide {
+  margin-top: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 8px 24px rgba(74, 53, 32, 0.06);
+}
+
+.seo-guide summary {
+  position: relative;
+  padding: 22px 58px 22px 26px;
+  color: var(--brown);
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(21px, 3vw, 27px);
+  font-weight: 700;
+  list-style: none;
+}
+
+.seo-guide summary::-webkit-details-marker {
+  display: none;
+}
+
+.seo-guide summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 26px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--brown);
+  font: 400 24px/1 Arial, sans-serif;
+}
+
+.seo-guide[open] summary::after {
+  content: "−";
+}
+
+.seo-guide__content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0 26px 28px;
+}
+
+.seo-guide__content section {
+  padding: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.seo-guide__content section:last-child {
+  grid-column: 1 / -1;
+}
+
+.seo-guide__content h2 {
+  font-size: clamp(22px, 3vw, 27px);
+}
+
+.seo-guide__content p {
+  margin: 0;
+  color: #514941;
+}
+
 .catalog-note .text-link {
   display: inline-block;
   margin-top: 16px;
@@ -187,6 +256,19 @@ h2 {
   .content-grid {
     grid-template-columns: 1fr;
     margin-top: 36px;
+  }
+
+  .seo-guide__content {
+    grid-template-columns: 1fr;
+    padding: 0 18px 20px;
+  }
+
+  .seo-guide__content section:last-child {
+    grid-column: auto;
+  }
+
+  .seo-guide summary {
+    padding: 19px 52px 19px 20px;
   }
 
   .cta {
